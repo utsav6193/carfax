@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18AFC98E277AFC23B3853447 /* Pods_AutoCar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56CCD330B5AF48592743B090 /* Pods_AutoCar.framework */; };
 		1968059322C82FA2006296DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1968059222C82FA2006296DB /* AppDelegate.swift */; };
 		1968059522C82FA2006296DB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1968059422C82FA2006296DB /* ViewController.swift */; };
 		1968059822C82FA2006296DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1968059622C82FA2006296DB /* Main.storyboard */; };
 		1968059A22C82FA5006296DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1968059922C82FA5006296DB /* Assets.xcassets */; };
 		1968059D22C82FA5006296DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1968059B22C82FA5006296DB /* LaunchScreen.storyboard */; };
 		196805A822C82FA5006296DB /* AutoCarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196805A722C82FA5006296DB /* AutoCarTests.swift */; };
+		6BA6A633B5630918445AC5AF /* Pods_AutoCarTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4BCAE31594790FE8B1AADA6 /* Pods_AutoCarTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,12 @@
 		196805A322C82FA5006296DB /* AutoCarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AutoCarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		196805A722C82FA5006296DB /* AutoCarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCarTests.swift; sourceTree = "<group>"; };
 		196805A922C82FA5006296DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1F76905A88A4392DDA1B8342 /* Pods-AutoCarTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoCarTests.debug.xcconfig"; path = "Target Support Files/Pods-AutoCarTests/Pods-AutoCarTests.debug.xcconfig"; sourceTree = "<group>"; };
+		4C840532BA4902C283D46B23 /* Pods-AutoCar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoCar.debug.xcconfig"; path = "Target Support Files/Pods-AutoCar/Pods-AutoCar.debug.xcconfig"; sourceTree = "<group>"; };
+		56CCD330B5AF48592743B090 /* Pods_AutoCar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AutoCar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A190D6128834BDDBBCE01B7 /* Pods-AutoCar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoCar.release.xcconfig"; path = "Target Support Files/Pods-AutoCar/Pods-AutoCar.release.xcconfig"; sourceTree = "<group>"; };
+		B34F3B3B377D7B5C0369F38B /* Pods-AutoCarTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoCarTests.release.xcconfig"; path = "Target Support Files/Pods-AutoCarTests/Pods-AutoCarTests.release.xcconfig"; sourceTree = "<group>"; };
+		F4BCAE31594790FE8B1AADA6 /* Pods_AutoCarTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AutoCarTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18AFC98E277AFC23B3853447 /* Pods_AutoCar.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BA6A633B5630918445AC5AF /* Pods_AutoCarTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +72,8 @@
 				1968059122C82FA2006296DB /* AutoCar */,
 				196805A622C82FA5006296DB /* AutoCarTests */,
 				1968059022C82FA2006296DB /* Products */,
+				32BE64E54296DB374ACBEA76 /* Pods */,
+				24DF7600D0AF172DA3EA01A0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -96,6 +108,27 @@
 			path = AutoCarTests;
 			sourceTree = "<group>";
 		};
+		24DF7600D0AF172DA3EA01A0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				56CCD330B5AF48592743B090 /* Pods_AutoCar.framework */,
+				F4BCAE31594790FE8B1AADA6 /* Pods_AutoCarTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		32BE64E54296DB374ACBEA76 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4C840532BA4902C283D46B23 /* Pods-AutoCar.debug.xcconfig */,
+				8A190D6128834BDDBBCE01B7 /* Pods-AutoCar.release.xcconfig */,
+				1F76905A88A4392DDA1B8342 /* Pods-AutoCarTests.debug.xcconfig */,
+				B34F3B3B377D7B5C0369F38B /* Pods-AutoCarTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -103,9 +136,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 196805AC22C82FA5006296DB /* Build configuration list for PBXNativeTarget "AutoCar" */;
 			buildPhases = (
+				12CB8D93EF155DD2A702967A /* [CP] Check Pods Manifest.lock */,
 				1968058B22C82FA2006296DB /* Sources */,
 				1968058C22C82FA2006296DB /* Frameworks */,
 				1968058D22C82FA2006296DB /* Resources */,
+				786785CE750CD911004702D3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -120,6 +155,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 196805AF22C82FA5006296DB /* Build configuration list for PBXNativeTarget "AutoCarTests" */;
 			buildPhases = (
+				A44EBE62F854A26682808181 /* [CP] Check Pods Manifest.lock */,
 				1968059F22C82FA5006296DB /* Sources */,
 				196805A022C82FA5006296DB /* Frameworks */,
 				196805A122C82FA5006296DB /* Resources */,
@@ -191,6 +227,75 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		12CB8D93EF155DD2A702967A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AutoCar-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		786785CE750CD911004702D3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AutoCar/Pods-AutoCar-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AutoCar/Pods-AutoCar-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A44EBE62F854A26682808181 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AutoCarTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1968058B22C82FA2006296DB /* Sources */ = {
@@ -358,6 +463,7 @@
 		};
 		196805AD22C82FA5006296DB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4C840532BA4902C283D46B23 /* Pods-AutoCar.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -376,6 +482,7 @@
 		};
 		196805AE22C82FA5006296DB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8A190D6128834BDDBBCE01B7 /* Pods-AutoCar.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -394,6 +501,7 @@
 		};
 		196805B022C82FA5006296DB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1F76905A88A4392DDA1B8342 /* Pods-AutoCarTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -415,6 +523,7 @@
 		};
 		196805B122C82FA5006296DB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B34F3B3B377D7B5C0369F38B /* Pods-AutoCarTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
