@@ -15,6 +15,7 @@
 		1968059D22C82FA5006296DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1968059B22C82FA5006296DB /* LaunchScreen.storyboard */; };
 		196805A822C82FA5006296DB /* AutoCarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196805A722C82FA5006296DB /* AutoCarTests.swift */; };
 		196805B522C9413B006296DB /* CarDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196805B422C9413B006296DB /* CarDetails.swift */; };
+		196805B822C9558A006296DB /* CarListingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196805B722C9558A006296DB /* CarListingCell.swift */; };
 		6BA6A633B5630918445AC5AF /* Pods_AutoCarTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4BCAE31594790FE8B1AADA6 /* Pods_AutoCarTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +41,7 @@
 		196805A722C82FA5006296DB /* AutoCarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCarTests.swift; sourceTree = "<group>"; };
 		196805A922C82FA5006296DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		196805B422C9413B006296DB /* CarDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarDetails.swift; sourceTree = "<group>"; };
+		196805B722C9558A006296DB /* CarListingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarListingCell.swift; sourceTree = "<group>"; };
 		1F76905A88A4392DDA1B8342 /* Pods-AutoCarTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoCarTests.debug.xcconfig"; path = "Target Support Files/Pods-AutoCarTests/Pods-AutoCarTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4C840532BA4902C283D46B23 /* Pods-AutoCar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoCar.debug.xcconfig"; path = "Target Support Files/Pods-AutoCar/Pods-AutoCar.debug.xcconfig"; sourceTree = "<group>"; };
 		56CCD330B5AF48592743B090 /* Pods_AutoCar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AutoCar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -121,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				1968059422C82FA2006296DB /* CarListingsViewController.swift */,
+				196805B722C9558A006296DB /* CarListingCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 				196805B522C9413B006296DB /* CarDetails.swift in Sources */,
 				1968059522C82FA2006296DB /* CarListingsViewController.swift in Sources */,
 				1968059322C82FA2006296DB /* AppDelegate.swift in Sources */,
+				196805B822C9558A006296DB /* CarListingCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
