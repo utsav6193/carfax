@@ -6,6 +6,7 @@ target 'AutoCar' do
 
   # Pods for AutoCar
   pod 'Alamofire'
+  pod 'SVProgressHUD'
 
   target 'AutoCarTests' do
     inherit! :search_paths

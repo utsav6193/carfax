@@ -7,13 +7,11 @@
 //
 
 import Foundation
-import Alamofire
-
 
 struct CarDetails: Codable{
     
-    let listingID           :       Int?
-    let carVIN              :       Int?
+    let listingID           :       String?
+    let carVIN              :       String?
     let carMake             :       String?
     let carModel            :       String?
     let carModelYear        :       Int?
@@ -26,7 +24,7 @@ struct CarDetails: Codable{
     let carBodyType         :       String?
     let carTransmission     :       String?
 
-    enum ListingKeys: String, CodingKey {
+    enum CodingKeys: String, CodingKey {
         case listingID          =       "id"
         case carVIN             =       "vin"
         case carMake            =       "make"
@@ -43,30 +41,4 @@ struct CarDetails: Codable{
     }
 }
 
-// MARK: Convenience initializers
 
-extension CarDetails
-{
-    init(data: Data) throws {
-        self = try JSONDecoder().decode(CarDetails.self, from: data)
-    }
-    
-    init(_ json: String, using encoding: String.Encoding = .utf8) throws {
-        guard let data = json.data(using: encoding) else {
-            throw NSError(domain: "JSONDecoding", code: 0, userInfo: nil)
-        }
-        try self.init(data: data)
-    }
-    
-    init(fromURL url: URL) throws {
-        try self.init(data: try Data(contentsOf: url))
-    }
-    
-    func jsonData() throws -> Data {
-        return try JSONEncoder().encode(self)
-    }
-    
-    func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
-        return String(data: try self.jsonData(), encoding: encoding)
-    }
-}
