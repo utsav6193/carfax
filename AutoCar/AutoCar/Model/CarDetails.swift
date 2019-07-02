@@ -10,20 +10,22 @@ import Foundation
 
 struct CarDetails: Codable{
     
-    let listingID           :       String?
-    let carVIN              :       String?
-    let carMake             :       String?
-    let carModel            :       String?
-    let carModelYear        :       Int?
-    let carMileage          :       Int?
-    let carPrice            :       Int?
-    let carCondition        :       String?
-    let carExteriorColor    :       String?
-    let carInteriorColor    :       String?
-    let isCertified         :       Bool
-    let carBodyType         :       String?
-    let carTransmission     :       String?
-
+    let listingID               :       String?
+    let carVIN                  :       String?
+    let carMake                 :       String?
+    let carModel                :       String?
+    let carModelYear            :       Int?
+    let carMileage              :       Int?
+    let carPrice                :       Int?
+    let carCondition            :       String?
+    let carExteriorColor        :       String?
+    let carInteriorColor        :       String?
+    let isCertified             :       Bool
+    let carBodyType             :       String?
+    let carTransmission         :       String?
+    let dealer                  :       Dealer?
+    let carThumbnail            :       CarThumbnail?
+    
     enum CodingKeys: String, CodingKey {
         case listingID          =       "id"
         case carVIN             =       "vin"
@@ -38,7 +40,35 @@ struct CarDetails: Codable{
         case isCertified        =       "certified"
         case carBodyType        =       "bodytype"
         case carTransmission    =       "transmission"
+        case dealer             =       "dealer"
+        case carThumbnail       =       "images"
+    }
+}
+
+struct Dealer: Codable{
+    
+    let phone                   :       String?
+    
+    enum CodingKeys: String, CodingKey {
+        case phone              =       "phone"
+    }
+}
+
+struct CarThumbnail: Codable{
+    
+    let firstPhoto              :       CarImages?
+    
+    enum CodingKeys: String, CodingKey {
+        case firstPhoto         =       "firstPhoto"
     }
 }
 
 
+struct CarImages: Codable{
+    
+    let mediumPhoto             :       String?
+    
+    enum CodingKeys: String, CodingKey {
+        case mediumPhoto        =       "medium"
+    }
+}
