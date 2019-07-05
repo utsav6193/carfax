@@ -21,11 +21,15 @@ class CarListingsViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Fetch car listings by calling API
-        getCarListings()
+        // Assign navigation bar title
+        self.title = NSLocalizedString("Used Cars", comment: "title for navigation bar")
+        
+        // Fetch used car listings - calling API
+        getUsedCarListings()
     }
     
     func setupTableView() {
+        // Assign delegate and datasource to table view
         carListingsTableView.delegate = self
         carListingsTableView.dataSource = self
         carListingsTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
@@ -34,8 +38,9 @@ class CarListingsViewController: UIViewController, UITableViewDelegate, UITableV
     
 // MARK: - Networking
     
-    func getCarListings(){
+    func getUsedCarListings(){
         
+        // Use weakSelf in blocks to avoid retain cycle
         weak var weakSelf = self
         
         NetworkManager.shared.fetchCarListings(carListingsUrl, success: { (responseObject) in
@@ -51,6 +56,7 @@ class CarListingsViewController: UIViewController, UITableViewDelegate, UITableV
                     
                     // Append the carListing object in the array
                     self.arrayCarDetails.append(carListing)
+                    
                 } catch let DecodingError.dataCorrupted(context) {
                     print(context)
                 } catch let DecodingError.keyNotFound(key, context) {
