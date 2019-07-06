@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		18AFC98E277AFC23B3853447 /* Pods_AutoCar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56CCD330B5AF48592743B090 /* Pods_AutoCar.framework */; };
+		196646BA22D01CFC00D08F0D /* CarListingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196646B922D01CFC00D08F0D /* CarListingDetailViewController.swift */; };
+		196646BC22D0249F00D08F0D /* CarDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196646BB22D0249F00D08F0D /* CarDetailCell.swift */; };
+		196646BE22D044AA00D08F0D /* CarListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196646BD22D044AA00D08F0D /* CarListing.swift */; };
 		1968059322C82FA2006296DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1968059222C82FA2006296DB /* AppDelegate.swift */; };
 		1968059522C82FA2006296DB /* CarListingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1968059422C82FA2006296DB /* CarListingsViewController.swift */; };
 		1968059822C82FA2006296DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1968059622C82FA2006296DB /* Main.storyboard */; };
@@ -32,6 +35,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		196646B922D01CFC00D08F0D /* CarListingDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarListingDetailViewController.swift; sourceTree = "<group>"; };
+		196646BB22D0249F00D08F0D /* CarDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarDetailCell.swift; sourceTree = "<group>"; };
+		196646BD22D044AA00D08F0D /* CarListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarListing.swift; sourceTree = "<group>"; };
 		1968058F22C82FA2006296DB /* AutoCar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutoCar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1968059222C82FA2006296DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1968059422C82FA2006296DB /* CarListingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarListingsViewController.swift; sourceTree = "<group>"; };
@@ -114,10 +120,10 @@
 			isa = PBXGroup;
 			children = (
 				196646B722CBC01F00D08F0D /* Network */,
-				196646B822CBC04400D08F0D /* Helper */,
 				196805B222C94065006296DB /* Model */,
 				196805B622C943DF006296DB /* View */,
 				196805B322C9406C006296DB /* Controller */,
+				196646B822CBC04400D08F0D /* Helper */,
 				1968059222C82FA2006296DB /* AppDelegate.swift */,
 				1968059E22C82FA5006296DB /* Info.plist */,
 			);
@@ -137,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				196805B422C9413B006296DB /* CarDetails.swift */,
+				196646BD22D044AA00D08F0D /* CarListing.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -146,6 +153,8 @@
 			children = (
 				1968059422C82FA2006296DB /* CarListingsViewController.swift */,
 				196805B722C9558A006296DB /* CarListingCell.swift */,
+				196646B922D01CFC00D08F0D /* CarListingDetailViewController.swift */,
+				196646BB22D0249F00D08F0D /* CarDetailCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -355,12 +364,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				196646BA22D01CFC00D08F0D /* CarListingDetailViewController.swift in Sources */,
 				196805B522C9413B006296DB /* CarDetails.swift in Sources */,
 				1968059522C82FA2006296DB /* CarListingsViewController.swift in Sources */,
 				19BF764C22C9968F00DCBFFD /* NetworkManager.swift in Sources */,
 				1968059322C82FA2006296DB /* AppDelegate.swift in Sources */,
 				196805B822C9558A006296DB /* CarListingCell.swift in Sources */,
 				19BF764E22CAF4C500DCBFFD /* AsyncImageView.swift in Sources */,
+				196646BE22D044AA00D08F0D /* CarListing.swift in Sources */,
+				196646BC22D0249F00D08F0D /* CarDetailCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

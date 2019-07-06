@@ -13,7 +13,8 @@ class CarListingsViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var carListingsTableView : UITableView!
     
     let carListingCellIdentifier = "CarListingCell"
-    var arrayCarDetails = [CarDetails]()
+    let segueToDetailViewIdentifier = "toDetailView"
+    var arrayCarListings = [CarDetails?]()
 
     // MARK: - URL
     private var carListingsUrl = "https://carfax-for-consumers.firebaseio.com/assignment.json"
@@ -30,9 +31,9 @@ class CarListingsViewController: UIViewController, UITableViewDelegate, UITableV
     
     func setupTableView() {
         // Assign delegate and datasource to table view
-        carListingsTableView.delegate = self
-        carListingsTableView.dataSource = self
-        carListingsTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        self.carListingsTableView.delegate = self
+        self.carListingsTableView.dataSource = self
+        self.carListingsTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         self.carListingsTableView.reloadData()
     }
     
@@ -55,7 +56,7 @@ class CarListingsViewController: UIViewController, UITableViewDelegate, UITableV
                     let carListing = try jsonDecoder.decode(CarDetails.self, from: listingData!)
                     
                     // Append the carListing object in the array
-                    self.arrayCarDetails.append(carListing)
+                    self.arrayCarListings.append(carListing)
                     
                 } catch let DecodingError.dataCorrupted(context) {
                     print(context)
@@ -90,28 +91,27 @@ class CarListingsViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let carListingCell = tableView.dequeueReusableCell(withIdentifier: carListingCellIdentifier) as! CarListingCell
         
-        if let carDetails = self.arrayCarDetails[indexPath.row] as CarDetails?{
+        if let carDetails = self.arrayCarListings[indexPath.row] as CarDetails?{
             
             // Assign values to the cell properties from the data model
-            if let price = carDetails.carPrice{
+            if let price = carDetails.carPrice {
                 carListingCell.carPrice.text = "$ \(price)"
             }
             
-            if let mileage = carDetails.carMileage{
+            if let mileage = carDetails.carMileage {
                 carListingCell.carMileage.text = "\(mileage) miles"
             }
             
-            if let make = carDetails.carMake, let model = carDetails.carModel, let year = carDetails.carModelYear{
+            if let make = carDetails.carMake, let model = carDetails.carModel, let year = carDetails.carModelYear {
                 carListingCell.carName.text = "\(make) \(model) \(year)"
             }
         
-            if let condition = carDetails.carCondition{
-                carListingCell.carCondition.text = "\(condition)"
+            if let isCertified = carDetails.isCertified {
+                carListingCell.carCondition.text = isCertified ? "Certified Used" : "Used"
             }
             
-            if let phone = carDetails.dealer?.phone{
+            if let phone = carDetails.dealer?.phone {
                 carListingCell.dealerPhone.setTitle("📞 " + self.formattedPhoneNumber(number: phone), for: .normal)
-                
                 carListingCell.dealerPhone.tag = indexPath.row
                 // Add action to perform when the button is tapped
                 carListingCell.dealerPhone.addTarget(self, action: #selector(callDealerTapped(_:)), for: .touchUpInside)
@@ -122,14 +122,29 @@ class CarListingsViewController: UIViewController, UITableViewDelegate, UITableV
             }
         }
     
+        // Set tableview cell selection style
         carListingCell.selectionStyle = .none
-        
         
         return carListingCell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.arrayCarDetails.count;
+        return self.arrayCarListings.count;
+    }
+
+// MARK: Segue
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let cell = sender as? CarListingCell {
+            let index = carListingsTableView.indexPath(for: cell)!.row
+            if segue.identifier == segueToDetailViewIdentifier {
+                let controller = segue.destination as? CarListingDetailViewController
+                if let carDetails = self.arrayCarListings[index] as CarDetails?{
+                    // Pass the selected CarListing object to then next controller
+                    controller?.carDetails = carDetails
+                }
+            }
+        }
     }
     
 // MARK: Helper Methods
@@ -151,8 +166,8 @@ class CarListingsViewController: UIViewController, UITableViewDelegate, UITableV
         return result
     }
     
-    @objc func callDealerTapped(_ sender: UIButton){
-         if let carDetails = self.arrayCarDetails[sender.tag] as CarDetails?, let phone = carDetails.dealer?.phone{
+    @objc func callDealerTapped(_ sender: UIButton) {
+        if let carDetails = self.arrayCarListings[sender.tag] as CarDetails?, let phone = carDetails.dealer?.phone{
             guard let url = URL(string: "tel://\(phone)") else {
                 return //be safe
             }

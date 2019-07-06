@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct CarDetails: Codable{
+struct CarDetails: Codable {
     
     let listingID               :       String?
     let carVIN                  :       String?
@@ -20,7 +20,7 @@ struct CarDetails: Codable{
     let carCondition            :       String?
     let carExteriorColor        :       String?
     let carInteriorColor        :       String?
-    let isCertified             :       Bool
+    let isCertified             :       Bool?
     let carBodyType             :       String?
     let carTransmission         :       String?
     let dealer                  :       Dealer?
@@ -45,7 +45,7 @@ struct CarDetails: Codable{
     }
 }
 
-struct Dealer: Codable{
+struct Dealer: Codable {
     
     let phone                   :       String?
     
@@ -54,7 +54,7 @@ struct Dealer: Codable{
     }
 }
 
-struct CarThumbnail: Codable{
+struct CarThumbnail: Codable {
     
     let firstPhoto              :       CarImages?
     
@@ -64,7 +64,7 @@ struct CarThumbnail: Codable{
 }
 
 
-struct CarImages: Codable{
+struct CarImages: Codable {
     
     let mediumPhoto             :       String?
     
