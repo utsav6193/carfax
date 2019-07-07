@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2pD-Eh-JLW">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CarListingCell" rowHeight="480" id="PwT-rt-Zy2" customClass="CarListingCell" customModule="AutoCar" customModuleProvider="target">
@@ -45,7 +45,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Model" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q60-cZ-vuG">
-                                                            <rect key="frame" x="20" y="355.5" width="334" height="31"/>
+                                                            <rect key="frame" x="20" y="355.5" width="334" height="28.5"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -57,21 +57,21 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Condition" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lg5-LF-Gdy">
-                                                            <rect key="frame" x="45" y="401.5" width="309" height="18"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                            <rect key="frame" x="45" y="399" width="77.5" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                             <color key="textColor" red="0.89803921568627454" green="0.092924935938039341" blue="0.2608299044476774" alpha="0.84705882352941175" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ball" translatesAutoresizingMaskIntoConstraints="NO" id="DQr-IS-v3g">
-                                                            <rect key="frame" x="20" y="400.5" width="20" height="20"/>
+                                                            <rect key="frame" x="20" y="399.5" width="20" height="20"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="20" id="fdo-7e-lWq"/>
                                                                 <constraint firstAttribute="width" constant="20" id="mcH-Ut-wym"/>
                                                             </constraints>
                                                         </imageView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XrI-t1-ICY">
-                                                            <rect key="frame" x="150" y="394" width="204" height="33"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                            <rect key="frame" x="132.5" y="391.5" width="221.5" height="36"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                                             <state key="normal" title="Phone"/>
                                                         </button>
                                                     </subviews>
@@ -83,7 +83,6 @@
                                                         <constraint firstItem="XrI-t1-ICY" firstAttribute="trailing" secondItem="qjY-QC-KFC" secondAttribute="trailing" id="Kd1-LF-9rc"/>
                                                         <constraint firstAttribute="bottom" secondItem="lg5-LF-Gdy" secondAttribute="bottom" constant="20" id="KtJ-YX-6Cu"/>
                                                         <constraint firstItem="qjY-QC-KFC" firstAttribute="centerY" secondItem="Opk-ai-hJ4" secondAttribute="centerY" id="Nma-Xd-OiY"/>
-                                                        <constraint firstItem="lg5-LF-Gdy" firstAttribute="trailing" secondItem="q60-cZ-vuG" secondAttribute="trailing" id="SJS-ex-NtC"/>
                                                         <constraint firstItem="qjY-QC-KFC" firstAttribute="leading" secondItem="Opk-ai-hJ4" secondAttribute="trailing" constant="10" id="TkO-7Y-2Rt"/>
                                                         <constraint firstItem="q60-cZ-vuG" firstAttribute="top" secondItem="qjY-QC-KFC" secondAttribute="bottom" constant="15" id="VMQ-si-YSg"/>
                                                         <constraint firstItem="DQr-IS-v3g" firstAttribute="centerY" secondItem="lg5-LF-Gdy" secondAttribute="centerY" id="XDH-4N-wHS"/>
@@ -92,12 +91,12 @@
                                                         <constraint firstItem="XrI-t1-ICY" firstAttribute="centerY" secondItem="lg5-LF-Gdy" secondAttribute="centerY" id="ZFw-Ve-Fj5"/>
                                                         <constraint firstItem="KmT-FE-58z" firstAttribute="centerX" secondItem="9Uq-pg-Qe9" secondAttribute="centerX" id="bNB-4Q-XLC"/>
                                                         <constraint firstItem="q60-cZ-vuG" firstAttribute="leading" secondItem="Opk-ai-hJ4" secondAttribute="leading" id="jYr-IO-3qH"/>
-                                                        <constraint firstItem="XrI-t1-ICY" firstAttribute="leading" secondItem="DQr-IS-v3g" secondAttribute="trailing" constant="110" id="kCm-N4-Ij6"/>
                                                         <constraint firstItem="lg5-LF-Gdy" firstAttribute="top" secondItem="q60-cZ-vuG" secondAttribute="bottom" constant="15" id="krB-dm-UmE"/>
                                                         <constraint firstItem="lg5-LF-Gdy" firstAttribute="leading" secondItem="DQr-IS-v3g" secondAttribute="trailing" constant="5" id="lqv-cR-BY6"/>
                                                         <constraint firstItem="Opk-ai-hJ4" firstAttribute="width" secondItem="qjY-QC-KFC" secondAttribute="width" id="v0y-QZ-TsN"/>
                                                         <constraint firstItem="q60-cZ-vuG" firstAttribute="trailing" secondItem="qjY-QC-KFC" secondAttribute="trailing" id="v1T-YI-f1C"/>
                                                         <constraint firstItem="Opk-ai-hJ4" firstAttribute="top" secondItem="KmT-FE-58z" secondAttribute="bottom" constant="10" id="v77-mj-ENW"/>
+                                                        <constraint firstItem="XrI-t1-ICY" firstAttribute="leading" secondItem="lg5-LF-Gdy" secondAttribute="trailing" constant="10" id="vop-v9-afF"/>
                                                         <constraint firstItem="KmT-FE-58z" firstAttribute="leading" secondItem="9Uq-pg-Qe9" secondAttribute="leading" id="zvh-Wc-i59"/>
                                                     </constraints>
                                                 </view>
@@ -135,22 +134,58 @@
                     <navigationItem key="navigationItem" id="VhT-O7-chp"/>
                     <connections>
                         <outlet property="carListingsTableView" destination="2pD-Eh-JLW" id="nXd-Xa-owc"/>
+                        <segue destination="cJD-Pt-cuW" kind="show" identifier="toInternetUnavailable" id="U2I-4e-x8p"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="120.53571428571428"/>
         </scene>
+        <!--Offline View Controller-->
+        <scene sceneID="gGg-ub-GsI">
+            <objects>
+                <viewController id="cJD-Pt-cuW" customClass="OfflineViewController" customModule="AutoCar" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jou-Ve-OM3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="offline" translatesAutoresizingMaskIntoConstraints="NO" id="YO1-PA-68d">
+                                <rect key="frame" x="132" y="380.5" width="150" height="145"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are offline, connect to the internet" textAlignment="center" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JDG-fA-Stp">
+                                <rect key="frame" x="75.5" y="525.5" width="263" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.51433295759999997" green="0.54734961000000004" blue="0.56930343380000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="YO1-PA-68d" firstAttribute="centerX" secondItem="WAc-gZ-aEX" secondAttribute="centerX" id="Jfb-hG-bAx"/>
+                            <constraint firstItem="JDG-fA-Stp" firstAttribute="top" secondItem="YO1-PA-68d" secondAttribute="bottom" id="ON0-wR-YYG"/>
+                            <constraint firstItem="YO1-PA-68d" firstAttribute="centerY" secondItem="WAc-gZ-aEX" secondAttribute="centerY" id="at4-uc-1Yg"/>
+                            <constraint firstItem="JDG-fA-Stp" firstAttribute="centerX" secondItem="YO1-PA-68d" secondAttribute="centerX" id="yw1-BY-bSg"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="WAc-gZ-aEX"/>
+                    </view>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="toCarListingsController" id="JJe-Pp-Y20"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uf5-WW-37H" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="395.6521739130435" y="892.63392857142856"/>
+        </scene>
         <!--Car Listing Detail View Controller-->
         <scene sceneID="0uK-AP-Q59">
             <objects>
                 <viewController id="w5T-LC-cvL" customClass="CarListingDetailViewController" customModule="AutoCar" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="88F-EY-B4E" customClass="CarListing">
+                    <view key="view" contentMode="scaleToFill" id="88F-EY-B4E">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mvN-e8-ZNV">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CarDetailCell" rowHeight="80" id="yjE-nH-XbV" customClass="CarDetailCell" customModule="AutoCar" customModuleProvider="target">
@@ -229,5 +264,9 @@
     </scenes>
     <resources>
         <image name="ball" width="128" height="128"/>
+        <image name="offline" width="150" height="145"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="JJe-Pp-Y20"/>
+    </inferredMetricsTieBreakers>
 </document>

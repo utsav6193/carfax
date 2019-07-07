@@ -12,6 +12,8 @@
 		196646BC22D0249F00D08F0D /* CarDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196646BB22D0249F00D08F0D /* CarDetailCell.swift */; };
 		196646BE22D044AA00D08F0D /* CarListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196646BD22D044AA00D08F0D /* CarListing.swift */; };
 		196646C022D13E4C00D08F0D /* DealerDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196646BF22D13E4C00D08F0D /* DealerDetails.swift */; };
+		196646C222D1BD2D00D08F0D /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196646C122D1BD2D00D08F0D /* ReachabilityManager.swift */; };
+		196646C422D1CAF200D08F0D /* OfflineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196646C322D1CAF200D08F0D /* OfflineViewController.swift */; };
 		1968059322C82FA2006296DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1968059222C82FA2006296DB /* AppDelegate.swift */; };
 		1968059522C82FA2006296DB /* CarListingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1968059422C82FA2006296DB /* CarListingsViewController.swift */; };
 		1968059822C82FA2006296DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1968059622C82FA2006296DB /* Main.storyboard */; };
@@ -40,6 +42,8 @@
 		196646BB22D0249F00D08F0D /* CarDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarDetailCell.swift; sourceTree = "<group>"; };
 		196646BD22D044AA00D08F0D /* CarListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarListing.swift; sourceTree = "<group>"; };
 		196646BF22D13E4C00D08F0D /* DealerDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerDetails.swift; sourceTree = "<group>"; };
+		196646C122D1BD2D00D08F0D /* ReachabilityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityManager.swift; sourceTree = "<group>"; };
+		196646C322D1CAF200D08F0D /* OfflineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineViewController.swift; sourceTree = "<group>"; };
 		1968058F22C82FA2006296DB /* AutoCar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutoCar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1968059222C82FA2006296DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1968059422C82FA2006296DB /* CarListingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarListingsViewController.swift; sourceTree = "<group>"; };
@@ -86,16 +90,10 @@
 			isa = PBXGroup;
 			children = (
 				19BF764B22C9968F00DCBFFD /* NetworkManager.swift */,
+				19BF764D22CAF4C500DCBFFD /* AsyncImageView.swift */,
+				196646C122D1BD2D00D08F0D /* ReachabilityManager.swift */,
 			);
 			path = Network;
-			sourceTree = "<group>";
-		};
-		196646B822CBC04400D08F0D /* Helper */ = {
-			isa = PBXGroup;
-			children = (
-				19BF764D22CAF4C500DCBFFD /* AsyncImageView.swift */,
-			);
-			path = Helper;
 			sourceTree = "<group>";
 		};
 		1968058622C82FA2006296DB = {
@@ -125,7 +123,6 @@
 				196805B222C94065006296DB /* Model */,
 				196805B622C943DF006296DB /* View */,
 				196805B322C9406C006296DB /* Controller */,
-				196646B822CBC04400D08F0D /* Helper */,
 				1968059222C82FA2006296DB /* AppDelegate.swift */,
 				1968059E22C82FA5006296DB /* Info.plist */,
 			);
@@ -158,6 +155,7 @@
 				196805B722C9558A006296DB /* CarListingCell.swift */,
 				196646B922D01CFC00D08F0D /* CarListingDetailViewController.swift */,
 				196646BB22D0249F00D08F0D /* CarDetailCell.swift */,
+				196646C322D1CAF200D08F0D /* OfflineViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -324,6 +322,7 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-AutoCar/Pods-AutoCar-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -331,6 +330,7 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -367,7 +367,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				196646C422D1CAF200D08F0D /* OfflineViewController.swift in Sources */,
 				196646BA22D01CFC00D08F0D /* CarListingDetailViewController.swift in Sources */,
+				196646C222D1BD2D00D08F0D /* ReachabilityManager.swift in Sources */,
 				196646C022D13E4C00D08F0D /* DealerDetails.swift in Sources */,
 				196805B522C9413B006296DB /* CarDetails.swift in Sources */,
 				1968059522C82FA2006296DB /* CarListingsViewController.swift in Sources */,

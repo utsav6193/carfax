@@ -16,11 +16,20 @@ class CarListingsViewController: UIViewController, UITableViewDelegate, UITableV
     let segueToDetailViewIdentifier = "toDetailView"
     var arrayCarListings = [CarDetails?]()
 
-    // MARK: - URL
+    let reachabilityManager:ReachabilityManager = ReachabilityManager.sharedInstance
+    
+    // API Url
     private var carListingsUrl = "https://carfax-for-consumers.firebaseio.com/assignment.json"
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationItem.hidesBackButton = true
+
+        // If the network is unreachable show the offline page
+       reachabilityManager.reachability.whenUnreachable = { _ in
+            self.showOfflinePage()
+        }
         
         // Assign navigation bar title
         self.title = NSLocalizedString("Used Cars", comment: "title for navigation bar")
@@ -35,6 +44,12 @@ class CarListingsViewController: UIViewController, UITableViewDelegate, UITableV
         self.carListingsTableView.dataSource = self
         self.carListingsTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         self.carListingsTableView.reloadData()
+    }
+    
+    func showOfflinePage(){
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "toInternetUnavailable", sender: self)
+        }
     }
     
 // MARK: - Networking
@@ -118,7 +133,7 @@ class CarListingsViewController: UIViewController, UITableViewDelegate, UITableV
             }
             
             if let url = carDetails.carThumbnail?.firstPhoto?.mediumPhoto {
-                carListingCell.carImage.loadAsyncFrom(url: url, placeholder: nil)
+                carListingCell.carImage.loadAsyncFrom(url: url, placeholder: UIImage(named: "placeholder"))
             }
         }
     

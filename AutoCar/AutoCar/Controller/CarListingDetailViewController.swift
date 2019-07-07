@@ -91,7 +91,7 @@ class CarListingDetailViewController: UIViewController, UITableViewDelegate, UIT
         // Set up table header view and load image
         if let url = carDetails?.carThumbnail?.firstPhoto?.mediumPhoto {
             let headerView = AsyncImageView()
-            headerView.loadAsyncFrom(url: url, placeholder: nil)
+            headerView.loadAsyncFrom(url: url, placeholder: UIImage(named: "placeholder"))
             headerView.contentMode = .scaleAspectFit
             let newSize = headerView.systemLayoutSizeFitting(CGSize(width: self.view.bounds.width, height: 0))
             headerView.frame.size.height = newSize.height + CGFloat(headerViewBottomPadding)
