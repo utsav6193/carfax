@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import MapKit
 
 class CarListingDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -17,6 +18,8 @@ class CarListingDetailViewController: UIViewController, UITableViewDelegate, UIT
     var carDetails:CarDetails?
     var carListing = CarListing.sharedInstance
     
+    let headerViewBottomPadding = 100
+    let tableFooterHeight = 400
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +41,7 @@ class CarListingDetailViewController: UIViewController, UITableViewDelegate, UIT
         }
         
         if let transmission = carDetails?.carTransmission {
-            carListing.add(myTitle: "Transmission", myDescription: transmission)
+            carListing.add(myTitle: "Transmission:", myDescription: transmission)
         }
         
         if let mileage = carDetails?.carMileage {
@@ -50,18 +53,31 @@ class CarListingDetailViewController: UIViewController, UITableViewDelegate, UIT
         }
         
         if let exteriorColor = carDetails?.carExteriorColor {
-            carListing.add(myTitle: "Exterior Color:", myDescription: exteriorColor)
+            carListing.add(myTitle: "Exterior:", myDescription: exteriorColor)
         }
         
         if let interiorColor = carDetails?.carInteriorColor {
-            carListing.add(myTitle: "Interior Color:", myDescription: interiorColor)
+            carListing.add(myTitle: "Interior:", myDescription: interiorColor)
         }
         
         if let isCertified = carDetails?.isCertified {
             carListing.add(myTitle: "Certified:", myDescription: isCertified ? "Yes" : "No")
         }
         
+        if let dealerName = carDetails?.dealer?.name {
+            carListing.add(myTitle: "Dealer:", myDescription: dealerName)
+        }
         
+        if let address = carDetails?.dealer?.address, let city = carDetails?.dealer?.city,
+           let state = carDetails?.dealer?.state, let zip = carDetails?.dealer?.zip
+        {
+            let dealerAddress = "\(address)\n\(city)\n\(state) \(zip)"
+            carListing.add(myTitle: "Address:", myDescription: dealerAddress)
+        }
+        
+        if let rating = carDetails?.dealer?.rating {
+            carListing.add(myTitle: "Dealer Rating:", myDescription: "\(rating) ⭐")
+        }
         
         self.setupTableView()
     }
@@ -77,7 +93,31 @@ class CarListingDetailViewController: UIViewController, UITableViewDelegate, UIT
             let headerView = AsyncImageView()
             headerView.loadAsyncFrom(url: url, placeholder: nil)
             headerView.contentMode = .scaleAspectFit
+            let newSize = headerView.systemLayoutSizeFitting(CGSize(width: self.view.bounds.width, height: 0))
+            headerView.frame.size.height = newSize.height + CGFloat(headerViewBottomPadding)
             self.carDetailsTableView.tableHeaderView = headerView
+        }
+        
+        if let latitude = carDetails?.dealer?.latitude,  let longitude = carDetails?.dealer?.longitude{
+            let coordinates = CLLocation(latitude: (latitude as NSString).doubleValue, longitude: (longitude as NSString).doubleValue)
+            
+            // Add Footer View to table
+            let footerView = UIView()
+            footerView.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: CGFloat(tableFooterHeight))
+
+            // Add MapView to the table footer view
+            let mapView = MKMapView()
+            mapView.mapType = .standard
+            mapView.frame = CGRect(x: 0, y: 20, width: footerView.bounds.width, height: footerView.bounds.height - 40)
+            
+            // Display the coordinates in the mapView using annotation
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = CLLocationCoordinate2DMake(coordinates.coordinate.latitude, coordinates.coordinate.longitude);
+            mapView.addAnnotation(annotation);
+            mapView.showAnnotations(mapView.annotations, animated: true)
+
+            footerView.addSubview(mapView)
+            self.carDetailsTableView.tableFooterView = footerView
         }
         
         // Reload Table View
@@ -94,8 +134,9 @@ class CarListingDetailViewController: UIViewController, UITableViewDelegate, UIT
         let carDetailCell = tableView.dequeueReusableCell(withIdentifier: carDetailCellIdentifier) as! CarDetailCell
 
         carDetailCell.detailTitle.text = carListing.arrayListing[indexPath.row].title
-        carDetailCell.detailDescription.text = carListing.arrayListing[indexPath.row].description as? String
-
+        carDetailCell.detailDescription.text = carListing.arrayListing[indexPath.row].description
+        carDetailCell.detailDescription.numberOfLines = 0
+        
         // Set tableview cell selection style
         carDetailCell.selectionStyle = .none
 
@@ -105,19 +146,6 @@ class CarListingDetailViewController: UIViewController, UITableViewDelegate, UIT
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return carListing.arrayListing.count;
     }
-    
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        carDetailsTableView.updateHeaderViewHeight()
-    }
 }
 
-extension UITableView {
-    func updateHeaderViewHeight() {
-        if let header = self.tableHeaderView {
-            let padding = 100.0
-            let newSize = header.systemLayoutSizeFitting(CGSize(width: self.bounds.width, height: 0))
-            header.frame.size.height = newSize.height + CGFloat(padding)
-        }
-    }
-}
+

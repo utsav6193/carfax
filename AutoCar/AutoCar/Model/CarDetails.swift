@@ -23,7 +23,7 @@ struct CarDetails: Codable {
     let isCertified             :       Bool?
     let carBodyType             :       String?
     let carTransmission         :       String?
-    let dealer                  :       Dealer?
+    let dealer                  :       DealerDetails?
     let carThumbnail            :       CarThumbnail?
     
     enum CodingKeys: String, CodingKey {
@@ -42,15 +42,6 @@ struct CarDetails: Codable {
         case carTransmission    =       "transmission"
         case dealer             =       "dealer"
         case carThumbnail       =       "images"
-    }
-}
-
-struct Dealer: Codable {
-    
-    let phone                   :       String?
-    
-    enum CodingKeys: String, CodingKey {
-        case phone              =       "phone"
     }
 }
 

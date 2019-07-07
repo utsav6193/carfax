@@ -107,7 +107,7 @@ class CarListingsViewController: UIViewController, UITableViewDelegate, UITableV
             }
         
             if let isCertified = carDetails.isCertified {
-                carListingCell.carCondition.text = isCertified ? "Certified Used" : "Used"
+                carListingCell.carCondition.text = isCertified ? "Certified" : "Used"
             }
             
             if let phone = carDetails.dealer?.phone {
