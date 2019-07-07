@@ -24,6 +24,14 @@ class CarListingDetailViewController: UIViewController, UITableViewDelegate, UIT
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // retreive data for previously selected car listing
+        self.getListingData()
+        
+    }
+    
+    private func getListingData() {
+        
+        // remove all previous data from the array
         carListing.arrayListing.removeAll()
         
         if let make = carDetails?.carMake, let model = carDetails?.carModel, let year = carDetails?.carModelYear {
@@ -69,7 +77,7 @@ class CarListingDetailViewController: UIViewController, UITableViewDelegate, UIT
         }
         
         if let address = carDetails?.dealer?.address, let city = carDetails?.dealer?.city,
-           let state = carDetails?.dealer?.state, let zip = carDetails?.dealer?.zip
+            let state = carDetails?.dealer?.state, let zip = carDetails?.dealer?.zip
         {
             let dealerAddress = "\(address)\n\(city)\n\(state) \(zip)"
             carListing.add(myTitle: "Address:", myDescription: dealerAddress)
@@ -82,29 +90,44 @@ class CarListingDetailViewController: UIViewController, UITableViewDelegate, UIT
         self.setupTableView()
     }
     
-    func setupTableView() {
+// MARK: TableView Setup
+
+    private func setupTableView() {
         // Assign delegate and datasource to table view
         self.carDetailsTableView.delegate = self
         self.carDetailsTableView.dataSource = self
         self.carDetailsTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         
-        // Set up table header view and load image
+        // Load Table header and footer view
+        self.carDetailsTableView.tableHeaderView = self.loadTableHeaderView()
+        self.carDetailsTableView.tableFooterView = self.loadTableFooterView()
+        
+        // Reload Table View
+        self.carDetailsTableView.reloadData()
+    }
+    
+    private func loadTableHeaderView() -> AsyncImageView? {
         if let url = carDetails?.carThumbnail?.firstPhoto?.mediumPhoto {
             let headerView = AsyncImageView()
             headerView.loadAsyncFrom(url: url, placeholder: UIImage(named: "placeholder"))
             headerView.contentMode = .scaleAspectFit
             let newSize = headerView.systemLayoutSizeFitting(CGSize(width: self.view.bounds.width, height: 0))
             headerView.frame.size.height = newSize.height + CGFloat(headerViewBottomPadding)
-            self.carDetailsTableView.tableHeaderView = headerView
+            return headerView
         }
-        
-        if let latitude = carDetails?.dealer?.latitude,  let longitude = carDetails?.dealer?.longitude{
+        else {
+            return nil
+        }
+    }
+    
+    private func loadTableFooterView() -> UIView? {
+        if let latitude = carDetails?.dealer?.latitude,  let longitude = carDetails?.dealer?.longitude {
             let coordinates = CLLocation(latitude: (latitude as NSString).doubleValue, longitude: (longitude as NSString).doubleValue)
             
             // Add Footer View to table
             let footerView = UIView()
             footerView.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: CGFloat(tableFooterHeight))
-
+            
             // Add MapView to the table footer view
             let mapView = MKMapView()
             mapView.mapType = .standard
@@ -115,13 +138,13 @@ class CarListingDetailViewController: UIViewController, UITableViewDelegate, UIT
             annotation.coordinate = CLLocationCoordinate2DMake(coordinates.coordinate.latitude, coordinates.coordinate.longitude);
             mapView.addAnnotation(annotation);
             mapView.showAnnotations(mapView.annotations, animated: true)
-
+            
             footerView.addSubview(mapView)
-            self.carDetailsTableView.tableFooterView = footerView
+            return footerView
         }
-        
-        // Reload Table View
-        self.carDetailsTableView.reloadData()
+        else {
+            return nil
+        }
     }
     
 // MARK: TableView Delegate and Datasource Methods

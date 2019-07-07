@@ -39,19 +39,19 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Opk-ai-hJ4">
-                                                            <rect key="frame" x="20" y="310.5" width="162" height="36"/>
+                                                            <rect key="frame" x="20" y="310.5" width="167" height="36"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Model" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q60-cZ-vuG">
-                                                            <rect key="frame" x="20" y="355.5" width="334" height="28.5"/>
+                                                            <rect key="frame" x="20" y="355.5" width="344" height="28.5"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mileage" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qjY-QC-KFC">
-                                                            <rect key="frame" x="192" y="316.5" width="162" height="24"/>
+                                                            <rect key="frame" x="197" y="316.5" width="167" height="24"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -70,8 +70,8 @@
                                                             </constraints>
                                                         </imageView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XrI-t1-ICY">
-                                                            <rect key="frame" x="132.5" y="391.5" width="221.5" height="36"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                                            <rect key="frame" x="132.5" y="391.5" width="231.5" height="36"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                             <state key="normal" title="Phone"/>
                                                         </button>
                                                     </subviews>
@@ -87,7 +87,7 @@
                                                         <constraint firstItem="q60-cZ-vuG" firstAttribute="top" secondItem="qjY-QC-KFC" secondAttribute="bottom" constant="15" id="VMQ-si-YSg"/>
                                                         <constraint firstItem="DQr-IS-v3g" firstAttribute="centerY" secondItem="lg5-LF-Gdy" secondAttribute="centerY" id="XDH-4N-wHS"/>
                                                         <constraint firstItem="DQr-IS-v3g" firstAttribute="leading" secondItem="q60-cZ-vuG" secondAttribute="leading" id="XQ1-N4-RIh"/>
-                                                        <constraint firstAttribute="trailing" secondItem="qjY-QC-KFC" secondAttribute="trailing" constant="20" id="Y8B-2U-Lqz"/>
+                                                        <constraint firstAttribute="trailing" secondItem="qjY-QC-KFC" secondAttribute="trailing" constant="10" id="Y8B-2U-Lqz"/>
                                                         <constraint firstItem="XrI-t1-ICY" firstAttribute="centerY" secondItem="lg5-LF-Gdy" secondAttribute="centerY" id="ZFw-Ve-Fj5"/>
                                                         <constraint firstItem="KmT-FE-58z" firstAttribute="centerX" secondItem="9Uq-pg-Qe9" secondAttribute="centerX" id="bNB-4Q-XLC"/>
                                                         <constraint firstItem="q60-cZ-vuG" firstAttribute="leading" secondItem="Opk-ai-hJ4" secondAttribute="leading" id="jYr-IO-3qH"/>
@@ -120,6 +120,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="OQG-J7-0FK"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="qWO-wh-3Gy"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -267,6 +271,7 @@
         <image name="offline" width="150" height="145"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="U2I-4e-x8p"/>
         <segue reference="JJe-Pp-Y20"/>
     </inferredMetricsTieBreakers>
 </document>

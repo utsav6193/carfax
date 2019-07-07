@@ -16,6 +16,7 @@ class CarListingsViewController: UIViewController, UITableViewDelegate, UITableV
     let segueToDetailViewIdentifier = "toDetailView"
     var arrayCarListings = [CarDetails?]()
 
+    // Reachability manager checks continuously for internet connectivity
     let reachabilityManager:ReachabilityManager = ReachabilityManager.sharedInstance
     
     // API Url
@@ -26,10 +27,8 @@ class CarListingsViewController: UIViewController, UITableViewDelegate, UITableV
         
         self.navigationItem.hidesBackButton = true
 
-        // If the network is unreachable show the offline page
-       reachabilityManager.reachability.whenUnreachable = { _ in
-            self.showOfflinePage()
-        }
+        // check if connected to internet
+        self.checkForInternetConnection()
         
         // Assign navigation bar title
         self.title = NSLocalizedString("Used Cars", comment: "title for navigation bar")
@@ -38,23 +37,33 @@ class CarListingsViewController: UIViewController, UITableViewDelegate, UITableV
         getUsedCarListings()
     }
     
-    func setupTableView() {
+    private func setupTableView() {
         // Assign delegate and datasource to table view
-        self.carListingsTableView.delegate = self
-        self.carListingsTableView.dataSource = self
+        //self.carListingsTableView.delegate = self
+        //self.carListingsTableView.dataSource = self
         self.carListingsTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        self.carListingsTableView.tableFooterView = UIView(frame: .zero)
         self.carListingsTableView.reloadData()
     }
     
-    func showOfflinePage(){
+// MARK: - Internet Connectivity
+    
+    private func showOfflinePage() {
         DispatchQueue.main.async {
             self.performSegue(withIdentifier: "toInternetUnavailable", sender: self)
         }
     }
     
+    private func checkForInternetConnection() {
+        // If the network is unreachable show the offline page
+        reachabilityManager.reachability.whenUnreachable = { _ in
+            self.showOfflinePage()
+        }
+    }
+    
 // MARK: - Networking
     
-    func getUsedCarListings(){
+    private func getUsedCarListings(){
         
         // Use weakSelf in blocks to avoid retain cycle
         weak var weakSelf = self
@@ -144,7 +153,13 @@ class CarListingsViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.arrayCarListings.count;
+        if self.arrayCarListings.count == 0 {
+            self.carListingsTableView.setEmptyMessage("Used Car Listings\n\nNo data yet")
+        } else {
+            self.carListingsTableView.restore()
+        }
+        
+        return self.arrayCarListings.count
     }
 
 // MARK: Segue
@@ -181,7 +196,7 @@ class CarListingsViewController: UIViewController, UITableViewDelegate, UITableV
         return result
     }
     
-    @objc func callDealerTapped(_ sender: UIButton) {
+    @objc private func callDealerTapped(_ sender: UIButton) {
         if let carDetails = self.arrayCarListings[sender.tag] as CarDetails?, let phone = carDetails.dealer?.phone{
             guard let url = URL(string: "tel://\(phone)") else {
                 return //be safe
@@ -193,3 +208,23 @@ class CarListingsViewController: UIViewController, UITableViewDelegate, UITableV
 }
 
 
+extension UITableView {
+    
+    func setEmptyMessage(_ message: String) {
+        let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height))
+        messageLabel.text = message
+        messageLabel.textColor = .black
+        messageLabel.numberOfLines = 0;
+        messageLabel.textAlignment = .center;
+        messageLabel.font = UIFont.systemFont(ofSize: 20)
+        messageLabel.sizeToFit()
+        
+        self.backgroundView = messageLabel;
+        self.separatorStyle = .none;
+    }
+    
+    func restore() {
+        self.backgroundView = nil
+        self.separatorStyle = .none
+    }
+}
