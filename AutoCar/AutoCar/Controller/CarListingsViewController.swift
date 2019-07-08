@@ -17,7 +17,7 @@ class CarListingsViewController: UIViewController, UITableViewDelegate, UITableV
     var arrayCarListings = [CarDetails?]()
 
     // Reachability manager checks continuously for internet connectivity
-    let reachabilityManager:ReachabilityManager = ReachabilityManager.sharedInstance
+    let reachabilityManager = ReachabilityManager.sharedInstance
     
     // API Url
     private var carListingsUrl = "https://carfax-for-consumers.firebaseio.com/assignment.json"
@@ -33,14 +33,17 @@ class CarListingsViewController: UIViewController, UITableViewDelegate, UITableV
         // Assign navigation bar title
         self.title = NSLocalizedString("Used Cars", comment: "title for navigation bar")
         
-        // Fetch used car listings - calling API
-        getUsedCarListings()
+        // Use weakSelf in blocks to avoid retain cycle
+        weak var weakSelf = self
+        
+        reachabilityManager.isReachable { _ in
+            // Fetch used car listings - calling API
+            weakSelf?.getUsedCarListings()
+        }
     }
     
     private func setupTableView() {
         // Assign delegate and datasource to table view
-        //self.carListingsTableView.delegate = self
-        //self.carListingsTableView.dataSource = self
         self.carListingsTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         self.carListingsTableView.tableFooterView = UIView(frame: .zero)
         self.carListingsTableView.reloadData()
@@ -56,6 +59,10 @@ class CarListingsViewController: UIViewController, UITableViewDelegate, UITableV
     
     private func checkForInternetConnection() {
         // If the network is unreachable show the offline page
+        reachabilityManager.isUnreachable { _ in
+            self.showOfflinePage()
+        }
+        
         reachabilityManager.reachability.whenUnreachable = { _ in
             self.showOfflinePage()
         }
@@ -69,9 +76,9 @@ class CarListingsViewController: UIViewController, UITableViewDelegate, UITableV
         weak var weakSelf = self
         
         NetworkManager.shared.fetchCarListings(carListingsUrl, success: { (responseObject) in
-            for aContact in responseObject["listings"] as! [Any] {
+            for myListing in responseObject["listings"] as! [Any] {
                 do {
-                    let jsonData = try JSONSerialization.data(withJSONObject: aContact, options: .prettyPrinted)
+                    let jsonData = try JSONSerialization.data(withJSONObject: myListing, options: .prettyPrinted)
                     let listingString = String(data: jsonData, encoding: .utf8)
                     let listingData = listingString?.data(using: .utf8)
                     
@@ -179,7 +186,7 @@ class CarListingsViewController: UIViewController, UITableViewDelegate, UITableV
     
 // MARK: Helper Methods
 
-    private func formattedPhoneNumber(number: String) -> String {
+    public func formattedPhoneNumber(number: String) -> String {
         let cleanPhoneNumber = number.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
         let mask = "(XXX) XXX-XXXX" // Phone number format in US
         
@@ -206,7 +213,6 @@ class CarListingsViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
 }
-
 
 extension UITableView {
     

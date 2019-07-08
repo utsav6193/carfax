@@ -11,7 +11,7 @@ import UIKit
 
 class OfflineViewController: UIViewController {
     
-    let reachabilityManager:ReachabilityManager = ReachabilityManager.sharedInstance
+    let reachabilityManager = ReachabilityManager.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
