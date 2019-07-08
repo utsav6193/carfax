@@ -222,7 +222,7 @@ extension UITableView {
         messageLabel.textColor = .black
         messageLabel.numberOfLines = 0;
         messageLabel.textAlignment = .center;
-        messageLabel.font = UIFont.systemFont(ofSize: 20)
+        messageLabel.font = UIFont.systemFont(ofSize: 15)
         messageLabel.sizeToFit()
         
         self.backgroundView = messageLabel;
