@@ -21,28 +21,13 @@ iOS app that display a feed of used car listings in Swift from Carfax. A host of
 
 # Screenshots
 
-
-![](Screenshots/LaunchScreen.png = 512x1108) 
-
-
-
-
-![](Screenshots/HomeScreen.png = 512x1108) 
-
-
-
-
-![](Screenshots/DetailScreen.png = 512x1108) 
-
-
-
-
-![](Screenshots/MapScreen.png = 512x1108) 
-
-
-
-
-![](Screenshots/OfflineScreen.png = 512x1108) 
+<p align="center">
+  <img src="Screenshots/LaunchScreen.png" width="512" height="1108">
+  <img src="Screenshots/HomeScreen.png" width="512" height="1108">
+  <img src="Screenshots/DetailScreen.png" width="512" height="1108">
+  <img src="Screenshots/MapScreen.png" width="512" height="1108">
+  <img src="Screenshots/OfflineScreen.png" width="512" height="1108">
+</p>
 
 
 
